@@ -115,7 +115,7 @@ var shareasaleSSCID=shareasaleGetParameterByName("sscid");function shareasaleSet
 			// This is used to track referrals from Shareasale
 			var sscid = shareasaleGetCookie('shareasaleSSCID');
             
-            var redirectUrl = 'https://photobook.myraprints.com/?token=' + token + '&name=' + jQuery('#LoginName').val();
+            var redirectUrl = 'https://app.gophotobook.com/?token=' + token + '&name=' + jQuery('#LoginName').val();
 			
 			if (sscid != "") {
 				redirectUrl = redirectUrl + "&sscid=" + sscid;
