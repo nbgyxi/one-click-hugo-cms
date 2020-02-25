@@ -1,51 +1,55 @@
-<div class="flex-m mhn3-m mb4">
-    <div>
-        <div class="fl w-100">
-            <span id="buttonContinueAsGuest" style="cursor: pointer; color: #1da1f2; border: 1px solid #1da1f2; padding: 5px; padding-left: 10px; padding-right: 10px" onclick="continueAsGuest()">Continue as guest</span>
-        </div>
-        <div class="fl w-50">
-            <h3>Already Customer?</h3>
-            <h6>Sign In Here</h6>
-            <div class="form-holder">
-                <ul>
-                    <li>
-                        <label for="">User Name</label>
-                        <input id="LoginName" type="text" name="" value="" placeholder="Enter username" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);" class="">
-                    </li>
-                    <li>
-                        <label for="">Password</label>
-                        <input id="LoginPassword" type="password" name="" value="" placeholder="Enter password" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);" class="">
-                    </li>
-                </ul>
-                <a href="#" class="t-right forgot-link">Forgot Password</a>
-                <div class="btn-holder t-center">
-                    <button type="button" id="LoginButton" onclick="login()" name="" class="btn btn-dviolet">Log in</button>
-                </div>
+<div class="flex-ns mhn2-ns mb3">
+    <div class="ph2-ns w-50-ns">
+        <h3>Already Customer?</h3>
+        <h6>Sign In Here</h6>
+        <div class="form-holder">
+            <ul>
+                <li>
+                    <label for="">User Name</label>
+                    <input id="LoginName" type="text" name="" value="" placeholder="Enter username"
+                        style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);"
+                        class="">
+                </li>
+                <li>
+                    <label for="">Password</label>
+                    <input id="LoginPassword" type="password" name="" value="" placeholder="Enter password"
+                        style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);"
+                        class="">
+                </li>
+            </ul>
+            <a href="#" class="t-right forgot-link">Forgot Password</a>
+            <div class="btn-holder t-center">
+                <button type="button" id="LoginButton" onclick="login()" name="" class="btn btn-dviolet">Log in</button>
             </div>
         </div>
-        <div class="fl w-50">
-            <h3></h3><h3>Get Started</h3>
-            <p>Choose username and password and enter your email to start making your photobook right now.</p>
-            <div class="form-holder form-wborder">
-                <ul>
-                    <li>
-                        <label for="">Username</label>
-                        <input id="CreateName" type="text" name="" value="" placeholder="All lower case and no spaces" class="">
-                    </li>
-                    <li>
-                        <label for="">Password</label>
-                        <input id="CreatePassword" type="password" name="" value="" placeholder="At least 6 characters" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAXtJREFUOBGVUj2LwkAUnIjBICIIKe8gWKRKo2BvYXMgWNlYWZ3gn1B/htekibWVcH1aIVV+wQULCxsRtMrtrGYv8RLUB8nuvjczu+9DWywWH3EcL8X3jidM07QfAfucz+ffhJdeIZNwu+iLexoFnrr5Cr/+05xSOvBoX61WYdt2BvaSgGVZ6PV6+QKGYahApVKBKJY6p2PKeduUufb7fbTbbaxWKxwOB0ynU+x2O7ium4ndk3l+KYU8AW02m8UM8Jnn81limMLlcsnDK59IMRKHiXpBQibiEZkY0co3sSxlDegoMsdx0O12Ua/XEUUR1us1jsejhFNEvaBIgK07nU4IwxDNZhOdTicDLXO205OViYrDZrORLg5Qq9VSdUpwJSEwoUjiuF+FOEzTxGAwwH6/x3a7zUD+piXjBpLukDwej2XenufJdNLQhzUYjUao1WpoNBpywIbDYZqPwi6wz6xyEATQdV2ROKmJEVMoIECszdL3ffb7n5EsnJNf8S6HAZZBgLIAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-                    </li>
-                    <li>
-                        <label for="">Email Address</label>
-                        <input id="CreateEmail" type="text" name="" value="" placeholder="Required to create a valid accounts">
-                    </li>
-                </ul>
-                <div class="btn-holder t-center">
-                    <button id="CreateButton" type="submit" name="" onclick="createAccount()" class="btn btn-violet">Sign up</button>
-                </div>
-            </div>
-        </div>
-    </div>  
-</div>
+    </div>
 
+    <div class="ph2-ns w-50-ns">
+        <h3>Get Started</h3>
+        <p>Choose username and password and enter your email to start making your photobook right now.</p>
+        <div class="form-holder form-wborder">
+            <ul>
+                <li>
+                    <label for="">Username</label>
+                    <input id="CreateName" type="text" name="" value="" placeholder="All lower case and no spaces"
+                        class="">
+                </li>
+                <li>
+                    <label for="">Password</label>
+                    <input id="CreatePassword" type="password" name="" value="" placeholder="At least 6 characters"
+                        autocomplete="off"
+                        style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAXtJREFUOBGVUj2LwkAUnIjBICIIKe8gWKRKo2BvYXMgWNlYWZ3gn1B/htekibWVcH1aIVV+wQULCxsRtMrtrGYv8RLUB8nuvjczu+9DWywWH3EcL8X3jidM07QfAfucz+ffhJdeIZNwu+iLexoFnrr5Cr/+05xSOvBoX61WYdt2BvaSgGVZ6PV6+QKGYahApVKBKJY6p2PKeduUufb7fbTbbaxWKxwOB0ynU+x2O7ium4ndk3l+KYU8AW02m8UM8Jnn81limMLlcsnDK59IMRKHiXpBQibiEZkY0co3sSxlDegoMsdx0O12Ua/XEUUR1us1jsejhFNEvaBIgK07nU4IwxDNZhOdTicDLXO205OViYrDZrORLg5Qq9VSdUpwJSEwoUjiuF+FOEzTxGAwwH6/x3a7zUD+piXjBpLukDwej2XenufJdNLQhzUYjUao1WpoNBpywIbDYZqPwi6wz6xyEATQdV2ROKmJEVMoIECszdL3ffb7n5EsnJNf8S6HAZZBgLIAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+                </li>
+                <li>
+                    <label for="">Email Address</label>
+                    <input id="CreateEmail" type="text" name="" value=""
+                        placeholder="Required to create a valid accounts">
+                </li>
+            </ul>
+            <div class="btn-holder t-center">
+                <button id="CreateButton" type="submit" name="" onclick="createAccount()" class="btn btn-violet">Sign
+                    up</button>
+            </div>
+        </div>
+    </div>
+</div>
