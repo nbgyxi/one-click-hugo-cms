@@ -46,6 +46,143 @@
 		</div>
 	</div>
 
+	<script src="https://myrafunctions.blob.core.windows.net/myra-cloud-assets/myra.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+<script>
+var shareasaleSSCID=shareasaleGetParameterByName("sscid");function shareasaleSetCookie(e,a,r,s,t){if(e&&a){var o,n=s?"; path="+s:"",i=t?"; domain="+t:"",l="";r&&((o=new Date).setTime(o.getTime()+r),l="; expires="+o.toUTCString()),document.cookie=e+"="+a+l+n+i}}function shareasaleGetParameterByName(e,a){a||(a=window.location.href),e=e.replace(/[\[\]]/g,"\\$&");var r=new RegExp("[?&]"+e+"(=([^&#]*)|&|#|$)").exec(a);return r?r[2]?decodeURIComponent(r[2].replace(/\+/g," ")):"":null}shareasaleSSCID&&shareasaleSetCookie("shareasaleSSCID",shareasaleSSCID,94670778e4,"/");
+</script>
+<script type="text/javascript">
+
+		function generateUID() {
+			// I generate the UID from two parts here 
+			// to ensure the random number provide enough bits.
+			var firstPart = (Math.random() * 46656) | 0;
+			var secondPart = (Math.random() * 46656) | 0;
+			firstPart = ("000" + firstPart.toString(36)).slice(-3);
+			secondPart = ("000" + secondPart.toString(36)).slice(-3);
+			return firstPart + secondPart;
+		}
+	
+        function continueAsGuest() {       
+            let body = {};
+			
+			var username = 'guest_' + generateUID();
+			var password = generateUID();
+            body.Name = username;
+            body.Password = password;    
+			
+            body.Email = 'guest@myraprints.com';
+            body.Site = 'myraprints.com';
+			
+            jQuery('#buttonContinueAsGuest').text('Please wait ...');
+
+            Helper.postData('', 'https://myra-create-account.azurewebsites.net/api/CreateAccount', body)
+                .then(data => onCreated(data, username, password))
+                .catch(error => console.error(error))
+        }
+	
+        function login(username, password) {       
+            let body = {};
+
+			if (!username) username = jQuery('#LoginName').val();
+			if (!password) password = jQuery('#LoginPassword').val();
+			
+            body.Name = username;
+            body.Password = password;
+            
+            jQuery('#LoginButton').text('Please wait ...');
+
+            Helper.postData('', 'https://myra-login.azurewebsites.net/api/Login', body)
+                .then(data => onLoggedIn(data))
+                .catch(error => console.error(error));
+        }
+
+        function onLoggedIn(data) {            
+            if (!data.TokenValue) {
+                jQuery('#LoginButton').text('Log in');
+                jQuery.alert({title: 'Login incorrect', content: 'Please try again or sign up', useBootstrap: false });
+                return;
+            }
+
+            jQuery('#LoginButton').text('Redirecting to your account ...');
+                
+            var token = data.TokenValue;
+            document.cookie = "token=" + token + "; expires=Thu, 18 Dec 2030 12:00:00 UTC; path=/";
+            localStorage.setItem('token', token);
+            localStorage.setItem('name', jQuery('#LoginName').val());
+			
+			// This is used to track referrals from Shareasale
+			var sscid = shareasaleGetCookie('shareasaleSSCID');
+            
+            var redirectUrl = 'https://photobook.myraprints.com/?token=' + token + '&name=' + jQuery('#LoginName').val();
+			
+			if (sscid != "") {
+				redirectUrl = redirectUrl + "&sscid=" + sscid;
+			}
+			
+			location.href = redirectUrl;
+        }
+
+        function createAccount() {
+            let body = {};
+
+            body.Name = jQuery('#CreateName').val();
+            body.Password = jQuery('#CreatePassword').val();
+            body.Email = jQuery('#CreateEmail').val();
+            body.Site = 'myraprints.com';            
+            
+            jQuery('#CreateButton').text('Please wait ...');
+
+            Helper.postData('', 'https://myra-create-account.azurewebsites.net/api/CreateAccount', body)
+                .then(data => onCreated(data))
+                .catch(error => console.error(error));
+        }
+
+        function onCreated(data, username, password) {            
+            if (data.message != 'Account created') {
+                jQuery('#CreateButton').text('Sign up');
+
+				if (data.message) {
+					jQuery.alert({title: 'Not created', content: data.message, useBootstrap: false });
+				}
+				else {			
+					jQuery.alert({title: 'Not created', content: JSON.stringify(data), useBootstrap: false });
+				}
+                return;
+            }
+
+            gtag_report_conversion();
+            
+            jQuery('#CreateButton').text('Sign up');
+			
+			if (!username) username = jQuery('#CreateName').val();
+			if (!password) password = jQuery('#CreatePassword').val();
+
+            jQuery('#LoginName').val(username);
+            jQuery('#LoginPassword').val(password);
+
+	    	login();                
+        }
+	
+		function shareasaleGetCookie(e) {
+			var r=e+"=";
+			var a=decodeURIComponent(document.cookie);
+			var o=a.split(";");
+			for(var n=0;n<o.length;n++) {
+				var t=o[n];
+				while(t.charAt(0)==" ") {
+					t=t.substring(1)
+				}
+				
+				if(t.indexOf(r)==0) {
+					return t.substring(r.length,t.length)
+				}
+			}
+			return ""
+		}
+
+</script>
+
 </footer>
 
 {{ partial "svg" . }}
